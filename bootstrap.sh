@@ -23,7 +23,7 @@ fi
 
 # Install puppet labs repo
 echo "Configuring PuppetLabs repo..."
-if [ ! rpm -qa puppet ]; then
+if rpm -qa puppet > /dev/null 2>&1; then
   repo_path=$(mktemp)
   wget --output-document=${repo_path} ${REPO_URL} >/dev/null 
   rpm -i ${repo_path} >/dev/null
